@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GALLERY</title>
+</head>
+<style>
+    body{
+        background-color:rgba(0, 0, 0, 0.826);
+    }
+    .image{
+        margin-top: 50px;
+    }
+    .image img{
+        width: 20%;
+        padding: 30px;
+        cursor: pointer;
+        height: 171px;
+        object-fit:cover;
+    }
+    
+    img:hover{
+        transform: scale(1.2);
+        border-radius: 20px;
+        box-shadow: 0 32px 75px #99a6ff33;
+    }
+    .fullimg{
+        width:100%;
+        height: 100vh;
+        position: fixed;
+        background: rgb(27, 26, 26);
+        top: 0;
+        left: 0;
+        display:none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+    }
+    .fullimg span{
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        font-size: 30px;
+        color:whitesmoke;
+        cursor: pointer;
+    }
+    h1{
+        text-align: center;
+        color: bisque;
+        margin: 60px;
+    }
+   
+</style>
+<body>
+
+    <h1 id="ani"></h1>
+    <div class="fullimg" id="disp">
+        <img src="photos/ph2.webp" id="dispimg">
+        <span onclick="closeimg()">x</span>
+    </div>
+    <div class="image">
+        <img src="photos/ph1.webp" onclick="openimg(this.src)">
+        <img src="photos/ph3.webp" onclick="openimg(this.src)">
+        <img src="photos/ph4.webp" onclick="openimg(this.src)">
+        <img src="photos/ph5.webp" onclick="openimg(this.src)">
+        <img src="photos/ph6.webp" onclick="openimg(this.src)">
+        <img src="photos/ph7.webp" onclick="openimg(this.src)">
+        <img src="photos/ph2.webp" onclick="openimg(this.src)">
+        <img src="photos/ph8.webp" onclick="openimg(this.src)">
+        
+    </div>
+</body>
+</html>
+<script>
+    const text = "IMAGE GALLERY";
+const animatedText = document.getElementById('ani');
+let index = 0;
+
+function showText() {
+  if (index < text.length) {
+    animatedText.innerHTML += text.charAt(index);
+    index++;
+    setTimeout(showText, 200);
+  }
+}
+
+showText();
+    var a = document.getElementById("disp");
+    var b = document.getElementById("dispimg")
+
+    function openimg(pic){
+        a.style.display = "flex";
+        b.src = pic;
+    }
+    function closeimg(){
+        a.style.display = "none";
+    }
+</script>
